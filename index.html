@@ -50,6 +50,9 @@
             margin-bottom: 2.5rem;
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
             animation: fadeIn 0.8s ease-in-out;
         }
 
@@ -64,6 +67,34 @@
             color: var(--muted-color);
             font-weight: 500;
             font-size: 1.1rem;
+        }
+
+        /* Botón de descarga PDF */
+        .btn-download {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #c81e1e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(163, 20, 20, 0.4);
+        }
+
+        .btn-download svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
         }
 
         /* Tarjetas interactivas con animación al pasar el mouse */
@@ -127,6 +158,71 @@
             font-size: 1rem;
         }
 
+        /* Estilos interactivos exclusivos para el Tutorial & Technology Comparison */
+        .tutorial-subtitle {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-item {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid var(--accent-color);
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.6rem;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .step-item:hover {
+            background: rgba(163, 20, 20, 0.15);
+            transform: translateX(8px);
+            border-left-width: 6px;
+            color: #ffffff;
+        }
+
+        .step-item strong {
+            color: var(--accent-color);
+        }
+
+        .step-item:hover strong {
+            color: #ff4d4d;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .comp-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .comp-card:hover {
+            border-style: solid;
+            border-color: var(--accent-color);
+            background: rgba(30, 41, 59, 0.9);
+            transform: scale(1.02);
+        }
+
         /* Animaciones */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
@@ -142,6 +238,19 @@
         section:nth-child(2) { animation-delay: 0.2s; }
         section:nth-child(3) { animation-delay: 0.3s; }
         section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Estilos de Impresión para ocultar el botón en el PDF final */
+        @media print {
+            #progress-bar, .btn-download {
+                display: none !important;
+            }
+            body {
+                background-color: #0f172a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
     </style>
 </head>
 <body>
@@ -150,8 +259,14 @@
 
     <div class="container">
         <header>
-            <h1>Aylin López</h1>
-            <p class="subtitle">Programming Technician Student</p>
+            <div>
+                <h1>Aylin López</h1>
+                <p class="subtitle">Programming Technician Student</p>
+            </div>
+            <button class="btn-download" onclick="window.print()">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                Download PDF
+            </button>
         </header>
 
         <section>
@@ -185,7 +300,38 @@
             </h2>
             <p>In the future, I'm going to apply for software development roles at Rockstar Games or Capcom. If I can, I will found my own game development company to create video games with innovative stories and lead my own tech studio.</p>
         </section>
+
+        <!-- Nueva sección interactiva: Tutorial & Technology Comparison -->
+        <section>
+            <h2>
+                <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                Tutorial & Technology Comparison
+            </h2>
+
+            <div class="tutorial-subtitle">How to run a Python script in VS Code:</div>
+            <ul class="step-list">
+                <li class="step-item"><strong>First:</strong> Open Visual Studio Code and create a new file with the <code>.py</code> extension.</li>
+                <li class="step-item"><strong>Then:</strong> Write your Python code in the editor.</li>
+                <li class="step-item"><strong>Next:</strong> Open the integrated terminal and run your script.</li>
+                <li class="step-item"><strong>Finally:</strong> Check the output in the console.</li>
+            </ul>
+
+            <div class="tutorial-subtitle">Technology Comparison:</div>
+            <div class="comparison-grid">
+                <div class="comp-card">
+                    <p>Python is simpler and easier to learn than C#. However, C# is more powerful and better suited for video game development than Python.</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
-        window.on
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>
