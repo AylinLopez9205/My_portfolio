@@ -9,11 +9,10 @@
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --text-color: #e2e8f0;
-            --accent-color: #a31414; /* Granate elegante */
-            --accent-hover: #c81e1e;
+            --accent-color: #a31414; /* Granate */
             --muted-color: #94a3b8;
             --border-color: #334155;
-            --glow-color: rgba(163, 20, 20, 0.25);
+            --glow-color: rgba(163, 20, 20, 0.4);
         }
 
         * {
@@ -23,13 +22,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Barra de progreso de lectura interactiva */
+        /* Barra de progreso de lectura */
         #progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), #e11d48);
+            background: var(--accent-color);
             width: 0%;
             z-index: 1000;
             transition: width 0.1s ease-out;
@@ -39,7 +38,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
         }
 
         .container {
@@ -49,56 +48,54 @@
 
         header {
             margin-bottom: 2.5rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 1.5rem;
             animation: fadeIn 0.8s ease-in-out;
         }
 
         h1 {
-            font-size: 2.3rem;
+            font-size: 2.4rem;
             color: #ffffff;
             margin-bottom: 0.2rem;
             letter-spacing: -0.5px;
         }
 
         .subtitle {
-            color: var(--accent-color);
-            font-weight: 600;
+            color: var(--muted-color);
+            font-weight: 500;
             font-size: 1.1rem;
-            display: inline-block;
-            transition: color 0.3s ease;
         }
 
-        /* Tarjetas interactivas con efectos hover */
+        /* Tarjetas interactivas con animación al pasar el mouse */
         section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 1.8rem;
             margin-bottom: 1.8rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             animation: fadeInUp 0.6s ease-out both;
         }
 
-        /* Borde superior sutil con color granate al hacer hover */
+        /* Borde superior que aparece en hover */
         section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: var(--accent-color);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 25px -5px var(--glow-color);
+            box-shadow: 0 12px 25px -5px var(--glow-color);
         }
 
         section:hover::before {
@@ -107,22 +104,22 @@
 
         h2 {
             color: var(--accent-color);
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.7rem;
         }
 
         h2 svg {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             fill: var(--accent-color);
             transition: transform 0.3s ease;
         }
 
         section:hover h2 svg {
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.2) rotate(6deg);
         }
 
         p {
@@ -130,16 +127,7 @@
             font-size: 1rem;
         }
 
-        footer {
-            text-align: center;
-            color: var(--muted-color);
-            font-size: 0.85rem;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-        }
-
-        /* Animaciones suaves */
+        /* Animaciones */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -150,7 +138,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Retardo en las animaciones para efecto cascada */
         section:nth-child(1) { animation-delay: 0.1s; }
         section:nth-child(2) { animation-delay: 0.2s; }
         section:nth-child(3) { animation-delay: 0.3s; }
@@ -159,7 +146,6 @@
 </head>
 <body>
 
-    <!-- Barra de progreso superior -->
     <div id="progress-bar"></div>
 
     <div class="container">
@@ -171,7 +157,7 @@
         <section>
             <h2>
                 <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                01. About Me
+                About Me
             </h2>
             <p>My name is Aylin López. I am a Programming Technician student at UTN. Before starting this career, I studied humanities, such as Literature and Therapeutic Companion, but I felt that it was not for me. My hobby was spending time on the computer, so I gave it an opportunity and enrolled in the program. When I started learning programming, I realized that I really loved it. I describe myself as a dedicated, logical, and curious problem solver that I want to learn new programming languages.</p>
         </section>
@@ -179,7 +165,7 @@
         <section>
             <h2>
                 <svg viewBox="0 0 24 24"><path d="M22 6H12l-2-2H2c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h18v10z"/></svg>
-                02. Present Projects
+                Present Projects
             </h2>
             <p>I am working at Dow Chemical Company. Now, I'm working on improving and optimizing control panel systems to make them more efficient using the legacy DOWTRAN code. In my daily work, I use control languages such as IEC 61131-3 and DOWTRAN, alongside C# and SQL.</p>
         </section>
@@ -187,7 +173,7 @@
         <section>
             <h2>
                 <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                03. Past Projects
+                Past Projects
             </h2>
             <p>I designed and developed my own 3D horror video game, 'A Haunted Hotel'. I built the game mechanics and coded the logic in C#. This project allowed me to combine my passion for video game development with my practical programming skills.</p>
         </section>
@@ -195,18 +181,13 @@
         <section>
             <h2>
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                04. Future Projects
+                Future Projects
             </h2>
             <p>In the future, I'm going to apply for software development roles at Rockstar Games or Capcom. If I can, I will found my own game development company to create video games with innovative stories and lead my own tech studio.</p>
         </section>
-
-        <footer>
-            <p>© Aylin López — English Course Portfolio</p>
-        </footer>
     </div>
 
     <script>
-        // Script para la barra de progreso al scrollear
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
